@@ -1,7 +1,9 @@
 package org.formacio.servei;
 
 import org.formacio.domain.Factura;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FacturesService {
 
 	
