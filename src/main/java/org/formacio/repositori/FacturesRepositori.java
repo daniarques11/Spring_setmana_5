@@ -12,5 +12,5 @@ public interface FacturesRepositori extends CrudRepository<Factura, Long>{
 	public Number totalClient(String client);
 	
 	public List<Factura> findByClientNom(String client);
-	
+		
 }
