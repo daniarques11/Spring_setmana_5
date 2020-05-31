@@ -15,6 +15,9 @@ public class FacturesService {
 	@Autowired
 	FacturesRepositori repositoriFactures;
 	
+	@Autowired
+	FidalitzacioService service;
+	
 	/*
 	 * Aquest metode ha de carregar la factura amb id idFactura i afegir una nova linia amb les dades
 	 * passades (producte i totalProducte)
@@ -30,6 +33,14 @@ public class FacturesService {
 		linia.setTotal(totalProducte);
 		facturaCarregada.getLinies().add(linia);
 		repositoriFactures.save(facturaCarregada);
+		
+		notificaRegal(facturaCarregada);
 		return facturaCarregada;
+	}
+	
+	public void notificaRegal (Factura factura) {
+		if (factura.getLinies().size() == 4) {
+			service.notificaRegal(factura.getClient().getEmail());
+		}
 	}
 }
